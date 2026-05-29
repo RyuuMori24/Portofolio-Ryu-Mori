@@ -59,8 +59,9 @@
 
         <div class="about-text">
           <p>
-            Halo! Saya Ryu Mori siswa kelas 11 di SMK Telkom Jakarta jurusan RPL yang
-            memiliki ketertarikan di bidang Web Development dan Database.<br />
+            Halo! Saya siswa kelas 11 di SMK Telkom Jakarta jurusan RPL yang
+            memiliki ketertarikan di bidang Web Development dan desain
+            antarmuka.<br />
             Saat ini, saya sudah menguasai dasar-dasar HTML, CSS, dan JavaScript
             untuk membuat website yang rapi dan nyaman digunakan.<br />
             Dengan semangat untuk terus berkembang, saya selalu terbuka untuk
@@ -211,12 +212,64 @@
         <div class="contact-item">
           <span>Email</span>
 
-          <p>ryumori1310@gmail.com </p>
+          <p>ryumori1310@gmail.com</p>
         </div>
       </div>
     </section>
 
-    <!-- JS -->
-    <script src="script.js"></script>
+    <script>
+
+      const typing = document.getElementById("typing");
+
+      const text = [
+        " Website Developer",
+        "UI Designer",
+        "Siswa SMK Telkom Jakarta",
+      ];
+
+      let textIndex = 0;
+      let charIndex = 0;
+
+      function typeEffect() {
+        if (charIndex < text[textIndex].length) {
+          typing.innerHTML += text[textIndex].charAt(charIndex);
+
+          charIndex++;
+
+          setTimeout(typeEffect, 100);
+        } else {
+          setTimeout(eraseEffect, 1500);
+        }
+      }
+
+      function eraseEffect() {
+        if (charIndex > 0) {
+          typing.innerHTML = text[textIndex].substring(0, charIndex - 1);
+
+          charIndex--;
+
+          setTimeout(eraseEffect, 50);
+        } else {
+          textIndex++;
+
+          if (textIndex >= text.length) {
+            textIndex = 0;
+          }
+
+          setTimeout(typeEffect, 500);
+        }
+      }
+
+      typeEffect();
+
+      // MOBILE MENU
+
+      const menuBtn = document.getElementById("menu-btn");
+      const navLinks = document.querySelector(".nav-links");
+
+      menuBtn.onclick = () => {
+        navLinks.classList.toggle("active");
+      };
+    </script>
   </body>
 </html>
